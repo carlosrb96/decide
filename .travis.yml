@@ -98,7 +98,7 @@ jobs:
         - git config --local user.email $EMAIL_TRAVIS 
         - git status 
         - git commit --all -m "Generated commit from TravisCI build $TRAVIS_BUILD_NUMBER" 
-        - git push -q --force https://$TOKEN_TRAVIS@github.com/$USER_TRAVIS/decide_pruebas_ci.git production 
+        - git push -q --force https://$TOKEN_TRAVIS@github.com/decide-dialga/decide.git production 
     - stage: "deploy to heroku" 
       if: (branch = production) 
       install: 
