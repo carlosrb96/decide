@@ -75,7 +75,8 @@ class Shuffle(APIView):
         """
 
         position = request.data.get("position", 0)
-        mn = get_object_or_404(Mixnet, voting_id=voting_id, auth_position=position)
+        mn = get_object_or_404(
+            Mixnet, voting_id=voting_id, auth_position=position)
 
         msgs = request.data.get("msgs", [])
         pk = request.data.get("pk", None)
@@ -109,7 +110,8 @@ class Decrypt(APIView):
         """
 
         position = request.data.get("position", 0)
-        mn = get_object_or_404(Mixnet, voting_id=voting_id, auth_position=position)
+        mn = get_object_or_404(
+            Mixnet, voting_id=voting_id, auth_position=position)
 
         msgs = request.data.get("msgs", [])
         pk = request.data.get("pk", None)
