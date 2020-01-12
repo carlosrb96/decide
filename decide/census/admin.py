@@ -35,7 +35,8 @@ class CensusAdmin(admin.ModelAdmin):
         if votings:
 
             for v in votings:
-                 if v.id == voting_id and self.check_user_exist(request.user.username):
+                 if v.id == voting_id and self.check_user_exist(
+                     request.user.username):
 
                     obj.save()
                     break
