@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # Apps needed fod SocialAuth branch
     'django.contrib.sites',
+    #'core',
     # This apps we will need for allauth apirest responses
     'rest_auth',
     'rest_auth.registration',
@@ -56,6 +57,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.facebook',
+
+
+
+
+    # 'social_core.backends.facebook.FacebookOAuth2',
     #################################################
 ]
 
@@ -76,7 +82,7 @@ AUTHENTICATION_BACKENDS = [
     #################################################
 ]
 
-SITE_ID = 2  # Cuidado con el id, viene de la bd
+SITE_ID = 1  # Cuidado con el id, viene de la bd
 
 # Used for Login and Social Auth branches
 LOGIN_REDIRECT_URL = 'index'
@@ -143,6 +149,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'authentication.CustomUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
