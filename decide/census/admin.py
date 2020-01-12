@@ -27,7 +27,6 @@ class CensusAdmin(admin.ModelAdmin):
 
         """
 
-
         votings = Voting.objects.all()
 
         voting_id = obj.voting_id
@@ -39,9 +38,6 @@ class CensusAdmin(admin.ModelAdmin):
 
                     obj.save()
                     break
-                 else:
-                    messages.error(request,'No existing voting')
-                    return HttpResponseRedirect('/admin/')
 
 
 admin.site.register(Census, CensusAdmin)
