@@ -32,11 +32,11 @@ def tally(ModelAdmin, request, queryset):
         token = request.session.get('auth-token', '')
         v.tally_votes(token)
 
+
 def deleteAll(ModelAdmin, request, queryset):
     for v in queryset:
        
         votes = Vote.objects.all()
-
 
         for i in votes:
             if i.voting_id == v.id:
@@ -47,6 +47,7 @@ def deleteAll(ModelAdmin, request, queryset):
 class QuestionOptionInline(admin.TabularInline):
     model = QuestionOption
     fields = ['question', 'option']
+
 
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [QuestionOptionInline]
@@ -96,8 +97,7 @@ class VotingAdmin(admin.ModelAdmin):
             if i.voting_id == obj.id:
                 i.delete()
 
-
-        super(VotingAdmin, self).delete_model(request,obj)
+        super(VotingAdmin, self).delete_model(request, obj)
 
 
 admin.site.register(Voting, VotingAdmin)
