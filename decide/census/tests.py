@@ -81,6 +81,7 @@ class CensusTestCase(BaseTestCase):
 
     def test_destroy_voter(self):
         data = {'voters': [1]}
-        response = self.client.delete('/census/{}/'.format(1), data, format='json')
+        response = self.client.delete(
+            '/census/{}/'.format(1), data, format='json')
         self.assertEqual(response.status_code, 204)
         self.assertEqual(0, Census.objects.count())
