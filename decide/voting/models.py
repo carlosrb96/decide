@@ -161,15 +161,15 @@ class Voting(models.Model):
         df2 = df.groupby(['Provincia', 'Partido Político'])
         for key, item in df2:
             if len(item) != 6 :
-                raise AssertionError(
-            'Las siguientes candidaturas no cumplen con los 6 candidatos obligatorios:\n' +
-             str(df2.get_group(key)))
+                raise AssertionError('Las siguientes candidaturas no cumplen '
+                                     'con los 6 candidatos obligatorios:\n' +
+                                     str(df2.get_group(key)))
         # Comprobación relación 1/2
         df3 = df.groupby(['Provincia', 'Partido Político', 'Sexo'])
         for key, item in df3:
             if len(df3.get_group(key)) != 3:
                 raise AssertionError(
-            'Las siguientes candidaturas no cumplen con la relación 1/2'+
+            'Las siguientes candidaturas no cumplen con la relación 1/2' +
              'entre hombres y mujeres:\n' + str(df3.get_group(key)))
 
         return df

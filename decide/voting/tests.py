@@ -148,7 +148,8 @@ class VotingTestCase(BaseTestCase):
         v.save()
 
         a, _ = Auth.objects.get_or_create(url=settings.BASEURL,
-                                          defaults={'me': True, 'name': 'test auth'})
+                                          defaults={'me': True,
+                                                    'name': 'test auth'})
         a.save()
         v.auths.add(a)
 
@@ -257,14 +258,16 @@ class VotingTestCase(BaseTestCase):
         Voting.checkInputFile(filePath)
 
         # Test negativo. Un candidato no ha pasado por el proceso de primarias
-        filePath = THIS_FOLDER + '/docs/CandidatesFiles/Candidatos_Senado2.xlsx'
+        filePath = THIS_FOLDER + '/docs/CandidatesFiles/Candidatos_Senado2' \
+                                 '.xlsx'
         try:
             Voting.checkInputFile(filePath)
         except:
             print('Test negativo de proceso de primarias correcto')
         
         # Test negativo. Faltan provincias con candidatos
-        filePath = THIS_FOLDER + '/docs/CandidatesFiles/Candidatos_Senado3.xlsx'
+        filePath = THIS_FOLDER + '/docs/CandidatesFiles/Candidatos_Senado3' \
+                                 '.xlsx'
         try:
             Voting.checkInputFile(filePath)
         except:
@@ -272,7 +275,8 @@ class VotingTestCase(BaseTestCase):
         
         # Test negativo. No hay 6 candidatos/provincia/partido político 
         # ni relación 1/2 entre hombres y mujeres
-        filePath = THIS_FOLDER + '/docs/CandidatesFiles/Candidatos_Senado4.xlsx'
+        filePath = THIS_FOLDER + '/docs/CandidatesFiles/Candidatos_Senado4' \
+                                 '.xlsx'
         try:
             Voting.checkInputFile(filePath)
         except:

@@ -75,12 +75,13 @@ class VotingAdmin(admin.ModelAdmin):
                     messages.error(request, msg_error)
                     return HttpResponseRedirect('')
                 except XLRDError:
-                    messages.error(request, 'Unsupported format or corrupt file'
-                                            '. The file must be a valid excel')
+                    messages.error(request, 'Unsupported format or corrupt '
+                                            'file. The file must be a valid '
+                                            'excel')
                 except Exception:
                     messages.error(request, 'Could not commit the operation. '
-                                            'Please, try again or contact with '
-                                            'an administrator')
+                                            'Please, try again or contact with'
+                                            ' an administrator')
                     return HttpResponseRedirect('')
             else:
                 messages.error(request, 'Please, select a file')
